@@ -1,6 +1,6 @@
 # To-Do List Application — Browser Version
 
-A web adaptation of the original **Java Swing To-Do List Application** by Prisca Mulishi, based on the existing Java source code at:
+A web adaptation of the original **Java Swing To-Do List Application**, based on the existing Java source code at:
 
 https://github.com/Riska997/Listjava/tree/main/todoListAPP
 
