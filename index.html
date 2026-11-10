@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151b38">
+  <meta name="description" content="A functional web version of the Java Swing To-Do List Application by Prisca Mulishi.">
+  <title>To-Do List Application | Prisca Mulishi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#overview" aria-label="To-Do List home">
+        <span class="brand-mark" aria-hidden="true">✓</span>
+        <span><strong>To-Do List</strong><small>PRODUCTIVITY SPACE</small></span>
+      </a>
+      <div class="sidebar-section">
+        <p class="sidebar-heading">WORKSPACE</p>
+        <a class="sidebar-link selected" href="#overview"><span aria-hidden="true">▦</span> Dashboard</a>
+        <a class="sidebar-link" href="#tasks"><span aria-hidden="true">☑</span> My Tasks</a>
+        <a class="sidebar-link" href="#add-task"><span aria-hidden="true">＋</span> Add New Task</a>
+      </div>
+      <div class="sidebar-fill"></div>
+      <div class="sidebar-note">
+        <span class="sidebar-note-icon" aria-hidden="true">✦</span>
+        <strong>Your ideas, organised.</strong>
+        <p>A simple interactive demonstration inspired by the original Java Swing application.</p>
+      </div>
+      <div class="sidebar-copy">© 2026 Prisca Mulishi</div>
+    </aside>
+
+    <main id="overview" class="main-content">
+      <header class="topbar">
+        <span class="breadcrumb">Workspace <span aria-hidden="true">/</span> <strong>My Dashboard</strong></span>
+        <div class="topbar-actions">
+          <span class="live-indicator"><span class="live-dot"></span> Interactive demo</span>
+          <a href="https://riska997.github.io/personal-portfolio-website/" target="_blank" rel="noopener noreferrer" class="portfolio-link">Portfolio ↗</a>
+        </div>
+      </header>
+
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> YOUR DAILY WORKSPACE</div>
+          <h1 id="page-title">Make space for<br><span>what matters.</span></h1>
+          <p>Keep your plans in one place, celebrate the little wins, and focus on the tasks that move you forward.</p>
+          <a class="hero-action" href="#add-task">＋ &nbsp; Create a task</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="decor-check decor-one">✓</div>
+          <div class="decor-check decor-two">✓</div>
+          <div class="hero-visual-card">
+            <div class="hero-visual-top"><span class="dots"><i></i><i></i><i></i></span><span>KEEP IT MOVING</span></div>
+            <div class="hero-visual-line"><span>✓</span><b></b></div>
+            <div class="hero-visual-line"><span>✓</span><b></b></div>
+            <div class="hero-visual-line pending"><span>○</span><b></b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Task statistics">
+        <article class="stat-card">
+          <span class="stat-label">Total tasks</span>
+          <div class="stat-bottom"><strong id="total-count">0</strong><span class="stat-icon indigo" aria-hidden="true">▤</span></div>
+          <p>Everything on your list</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Completed</span>
+          <div class="stat-bottom"><strong id="completed-count">0</strong><span class="stat-icon green" aria-hidden="true">✓</span></div>
+          <p>Goals you've achieved</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Remaining</span>
+          <div class="stat-bottom"><strong id="remaining-count">0</strong><span class="stat-icon amber" aria-hidden="true">◷</span></div>
+          <p>Still on your radar</p>
+        </article>
+        <article class="stat-card">
+          <span class="stat-label">Completion rate</span>
+          <div class="stat-bottom"><strong id="completion-rate">0%</strong><span class="stat-icon violet" aria-hidden="true">↗</span></div>
+          <p>Progress at a glance</p>
+        </article>
+      </section>
+
+      <div class="content-grid">
+        <section id="tasks" class="panel task-panel" aria-labelledby="task-list-title">
+          <div class="panel-head">
+            <div><span class="section-kicker">STAY ON TRACK</span><h2 id="task-list-title">My tasks <span id="list-number" class="count-bubble">0</span></h2><p class="panel-subtitle">Small steps add up. Here's what's on your list.</p></div>
+            <button id="clear-all" type="button" class="clear-all">Clear all</button>
+          </div>
+          <div class="task-toolbar">
+            <div class="tabs" role="group" aria-label="Filter tasks">
+              <button type="button" class="tab active" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="tab" data-filter="active" aria-pressed="false">Active</button>
+              <button type="button" class="tab" data-filter="completed" aria-pressed="false">Completed</button>
+            </div>
+            <label class="search-wrap"><span aria-hidden="true">⌕</span><input id="task-search" type="search" placeholder="Search tasks..." aria-label="Search tasks" maxlength="160"></label>
+          </div>
+          <ul id="task-list" class="task-list" aria-label="Your to-do tasks"></ul>
+          <div id="empty-state" class="empty-state" hidden><div class="empty-icon" aria-hidden="true">☑</div><strong id="empty-title">No tasks yet</strong><p id="empty-description">Create a task to get started.</p></div>
+          <div class="panel-footer"><span id="showing-count">Showing 0 tasks</span><button id="reset-samples" type="button" class="reset-link">Restore sample tasks</button></div>
+        </section>
+
+        <div class="right-column">
+          <section id="add-task" class="panel add-panel" aria-labelledby="add-title">
+            <div class="add-panel-header"><span class="add-badge" aria-hidden="true">＋</span><div><span class="section-kicker">GOT SOMETHING TO DO?</span><h2 id="add-title">Add a new task</h2></div></div>
+            <p class="panel-subtitle">Give your task a clear name, then add it to your list.</p>
+            <form id="task-form" novalidate>
+              <label for="new-task" class="field-label">Task name</label>
+              <input id="new-task" name="task" type="text" class="task-input" placeholder="e.g. Review my Java project" maxlength="160" autocomplete="off" required>
+              <p id="form-error" class="form-error" role="alert"></p>
+              <button class="add-button" type="submit">＋ &nbsp; Add task</button>
+            </form>
+            <p class="small-note">Tip: Press Enter to add a task quickly.</p>
+          </section>
+          <section class="panel progress-panel" aria-labelledby="progress-title">
+            <div class="progress-head"><span class="section-kicker">ONE STEP AT A TIME</span><h2 id="progress-title">Your progress <span aria-hidden="true">✦</span></h2><p class="panel-subtitle">You're making progress with every checkmark.</p></div>
+            <div class="progress-display"><strong id="progress-number">0%</strong><span>tasks completed</span></div>
+            <div class="progress-track" role="progressbar" aria-label="Task completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar"><div id="progress-fill"></div></div>
+            <p class="progress-message" id="progress-message">Add your first task to get started.</p>
+          </section>
+          <section class="local-note"><span aria-hidden="true">ⓘ</span><p><strong>Portfolio demonstration.</strong> Tasks are saved in your own browser. Visitors see their own separate lists, not each other's data.</p></section>
+        </div>
+      </div>
+      <footer class="footer"><span>To-Do List Application · Web adaptation of a Java Swing project</span><a href="https://github.com/Riska997/Listjava/tree/main/todoListAPP" target="_blank" rel="noopener noreferrer">Original Java code ↗</a></footer>
+    </main>
+  </div>
+  <div id="notification" class="notification" hidden role="status" aria-live="polite"></div>
+</body>
+</html>
